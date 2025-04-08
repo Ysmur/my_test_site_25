@@ -90,6 +90,16 @@ def handle_dialog(res, req):
                 res['end_session'] = True
             elif 'помощь' in req['request']['nlu']['tokens']:
                 res['response']['text'] = 'Справка!'
+                res['response']['buttons'] = [
+                    {
+                        'title': 'Да',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Нет',
+                        'hide': True
+                    }
+                ]
             else:
                 res['response']['text'] = 'Не поняла ответа! Так да или нет?'
                 res['response']['buttons'] = [
@@ -106,6 +116,8 @@ def handle_dialog(res, req):
                         'hide': True
                     }
                 ]
+        elif 'помощь' in req['request']['nlu']['tokens']:
+            res['response']['text'] = 'Справка1!'
         else:
             play_game(res, req)
 
@@ -143,6 +155,14 @@ def play_game(res, req):
             res['response']['text'] = 'Правильно! Сыграем ещё?'
             res['response']['buttons'] = [
                 {
+                    'title': 'Да',
+                    'hide': True
+                },
+                {
+                    'title': 'Нет',
+                    'hide': True
+                },
+                {
                     'title': 'Помощь',
                     'hide': True
                 }
@@ -160,6 +180,14 @@ def play_game(res, req):
                 res['response']['text'] = f'Вы пытались. Это {city.title()}. Сыграем ещё?'
                 res['response']['buttons'] = [
                     {
+                        'title': 'Да',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Нет',
+                        'hide': True
+                    },
+                    {
                         'title': 'Помощь',
                         'hide': True
                     }
@@ -175,6 +203,14 @@ def play_game(res, req):
                 res['response']['card']['image_id'] = cities[city][attempt - 1]
                 res['response']['text'] = 'А вот и не угадал!'
                 res['response']['buttons'] = [
+                    {
+                        'title': 'Да',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Нет',
+                        'hide': True
+                    },
                     {
                         'title': 'Помощь',
                         'hide': True
