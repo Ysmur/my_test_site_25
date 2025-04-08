@@ -3,3 +3,5 @@ flask-wtf
 flask_login
 sqlalchemy
 werkzeug
+requests
+urllib3
